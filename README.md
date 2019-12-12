@@ -10,6 +10,32 @@ The main repo https://github.com/David-Igou/k3os-aws-terraform will have more fe
 
 Future pushes will add AWS plugins, db options, loadbalancer options, more k3s flags, and hopefully I'll find an easy way to automatically deploy manifests post install.
 
+## Limitations
+
+To keep the barrier of entry low, currently this onle does a single master `n` worker setup. The most you can really configure here is adding an eip (So the master keeps the same ip between rebuilds).
+
+Configurations that are not supported:
+
+* Availability zones - This might come later, but the shortest path to working storage is EBS which is locked to AZs anyway.
+* External database - One master so, you're using local sqlite
+* ELB - One master, once again.
+
+Features I'll eventually add to this repo:
+
+* Automatically generating the node tokens
+* More intricate OOTB configurations via user_data (read on the k3os config.yaml)
+* `variables.tf` is soul-crushingly badly put together
+
+Full leveraging of AWS will come to the parent repo over time
+
+## Common changes
+
+* "I don't want traefik/metrics-server or another feature k3s ships with"
+** This can be disabled via --no-deploy, which you can pass using k3_args
+
+* "Should I put tons of things in `manifests`"
+** I don't - I put the CSI deployments, and a GitOps operator in mine, and have the operator pull everything else I plan on running down
+
 ## Bootstrapping the cluster
 
 k3s automatically creates manifests stored in `/var/lib/rancher/k3os/server/manifests/` - When `sync_manifests` is set to true, a provisioner will sync the local manifests directory to the remote.
