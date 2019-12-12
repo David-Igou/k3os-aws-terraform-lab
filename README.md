@@ -30,13 +30,13 @@ Full leveraging of AWS will come to the parent repo over time
 
 ## Common changes
 
-* "I don't want traefik/metrics-server or another feature k3s ships with"
+1.  "I don't want traefik/metrics-server or another feature k3s ships with"
 
-** This can be disabled via --no-deploy, which you can pass using k3_args
+* This can be disabled via --no-deploy, which you can pass using k3_args
 
-* "Should I put tons of things in `manifests`"
+2.  "Should I put tons of things in `manifests`"
 
-** I don't - I put the CSI deployments, and a GitOps operator in mine, and have the operator pull everything else I plan on running down
+*  I don't - I put the CSI deployments, and a GitOps operator in mine, and have the operator pull everything else I plan on running down
 
 ## Bootstrapping the cluster
 
