@@ -1,4 +1,4 @@
-# k3os-aws-terraform
+# k3os-aws-terraform-lab
 
 The purpose of this repo is to deploy k3os on AWS, and defining configuration via terraform variables. The current design is meant to be light weight with limited features, but very easy to bring up.
 
@@ -106,3 +106,4 @@ ip-10-1-1-246.us-east-2.compute.internal   12m          1%     197Mi           4
 
 
 
+-
