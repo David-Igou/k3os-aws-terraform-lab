@@ -1,16 +1,20 @@
 # k3os-aws-terraform
 
-This is a WIP, in its first MVP.
-
 The purpose of this repo is to deploy k3os on AWS, and defining configuration via terraform variables. The current design is meant to be light weight with limited features, but very easy to bring up.
 
 <!-- TODO: Add links to everything used in this project -->
 
 Currently this only supports a single master deployment.
 
+The main repo https://github.com/David-Igou/k3os-aws-terraform will have more features added, but this exists as a route to the easiest/cheapest multi-worker clusters in the cloud possible.
+
 Future pushes will add AWS plugins, db options, loadbalancer options, more k3s flags, and hopefully I'll find an easy way to automatically deploy manifests post install.
 
-The arguments for cloudprovider plugin/EBS CSI plugin are currently hard coded, but the plugins themselves are untested. This will be made more dynamic
+## Bootstrapping the cluster
+
+k3s automatically creates manifests stored in `/var/lib/rancher/k3os/server/manifests/` - When `sync_manifests` is set to true, a provisioner will sync the local manifests directory to the remote.
+
+This also pulls the kubeconfig down, but you'll have to edit the url from 127.0.0.1 to whatever resolves to your master.
 
 ## Idle Performance:
 
